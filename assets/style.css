@@ -1,0 +1,25 @@
+html {
+    height: 100%;
+}
+
+header {
+    background-color: #e45f56;
+    text-align: center;
+}
+
+.forecast-nav {
+    color: beige !important;
+    display: inline-block;
+}
+
+nav h1 {
+    display: inline-block;
+}
+
+/* .my-background {
+    background-color: #e45f56;
+} */
+
+.text-color {
+    color: beige;
+}
