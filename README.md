@@ -1,2 +1,2 @@
-# API_Weather_Dashboard
+# 6_HW_API_Weather_Dashboard
 A weather dashboard that will feature dynamically updated HTML and CSS retrieving data from OpenWeather API
