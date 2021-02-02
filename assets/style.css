@@ -2,7 +2,7 @@ html {
     height: 100%;
 }
 
-header {
+.first-header {
     background-color: #e45f56;
     text-align: center;
 }
