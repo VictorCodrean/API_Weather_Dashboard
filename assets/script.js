@@ -6,6 +6,7 @@ var cityInfoEl = document.querySelector("#city-content");
 var currentDay = document.querySelector("#current-day");
 var apiKey = "a9e49bbfb982db505e4157a83863ddcc";
 var timeStampsCount = 4;
+var todaysDate = moment().format("DD/MM/YYYY");
 
 function getWeatherData(cityNameInput, lat, lon) {
     var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=${apiKey}&units=imperial`
@@ -17,11 +18,13 @@ function getWeatherData(cityNameInput, lat, lon) {
         .then(function (data) {
             console.log(data);
 
+            $("#city-content").empty();
             cityInfoEl.setAttribute("class", "card");
-            var cityHeader = $("<h5>").addClass("card-header").text(data.name);
-            //  + data.weather[0].icon
+
+            var cityHeader = $("<h5>").addClass("card-header").text("Weather today" + " in " + data.name);
+            var icon = $("<img>").attr("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
             var cardBody = $("<div>").addClass("card-body");
-            var cardTitle = $("<h4>").addClass("card-title").text("Weather Conditions:");
+            var cardTitle = $("<h4>").addClass("card-title").text(todaysDate + " - Weather Conditions:");
             var cityTemp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " °F");
             var cityHumidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
             var cityWindSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " miles/hour");
@@ -32,6 +35,7 @@ function getWeatherData(cityNameInput, lat, lon) {
 
             $("#city-content").append(cityHeader);
             $("#city-content").append(cardBody);
+            cityHeader.append(icon);
             cardBody.append(cardTitle);
             cardBody.append(cityTemp);
             cardBody.append(cityHumidity);
@@ -41,6 +45,8 @@ function getWeatherData(cityNameInput, lat, lon) {
 };
 
 function uvIndex(lat, long, timeStampsCount, apiKey) {
+    // Reset/clear input value;
+    $("#search-input").val("");
     // got the UV index for 4 days "might include for 4 days forecast"...
     var requestUrlUvIndex = `http://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${long}&cnt=${timeStampsCount}&appid=${apiKey}`
     fetch(requestUrlUvIndex)
@@ -79,8 +85,7 @@ function uvIndex(lat, long, timeStampsCount, apiKey) {
         });
 };
 
-$(".search-btn").on("click", function (event) {
-    // $("#current-day").empty();
+$(".search-btn").on("click", function () {
     var cityNameInput = $("#search-input").val();
     getWeatherData(cityNameInput);
     console.log(cityNameInput)
