@@ -49,10 +49,32 @@ function uvIndex(lat, long, timeStampsCount, apiKey) {
         .then(function (data) {
             console.log(data)
 
-            var cityUvIndex = $("<p>").addClass("card-text").text("UV index: " + data[0].value);
+            var cityUvIndex = $("<p>").addClass("card-text uv-index").text("UV index: ");
+            var uvIndexBg = $("<span>").addClass("uv-index-bg").text(data[0].value);
 
             $("#city-content .card-body").append(cityUvIndex);
+            $("#city-content .uv-index").append(uvIndexBg);
 
+            // A UV Index reading of 0 to 2 means low danger 
+            // A UV Index reading of 3 to 5 means moderate risk of harm
+            // A UV Index reading of 6 to 7 means high risk
+            // A UV Index reading of 8 to 10 means very high risk of harm
+            // A UV Index reading of 11 or more means extreme risk of harm
+            if (data[0].value < 3) {
+                $("#city-content .uv-index-bg").addClass("bg-success");
+            }
+            else if (data[0].value >= 3 || data[0].value < 6) {
+                $("#city-content .uv-index-bg").addClass("bg-moderate");
+            }
+            else if (data[0].value >= 6 || data[0].value < 8) {
+                $("#city-content .uv-index-bg").addClass("bg-warning");
+            }
+            else if (data[0].value >= 8 || data[0].value < 11) {
+                $("#city-content .uv-index-bg").addClass("bg-danger");
+            }
+            else if (data[0].value >= 11) {
+                $("#city-content .uv-index-bg").addClass("bg-extreme");
+            }
         });
 };
 

@@ -23,3 +23,11 @@ nav h1 {
 .text-color {
     color: beige;
 }
+
+.bg-moderate {
+    background-color: yellow;
+}
+
+.bg-extreme {
+    background-color: blueviolet;
+}
