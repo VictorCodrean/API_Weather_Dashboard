@@ -2,7 +2,8 @@
 // THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature,
 // the humidity, the wind speed, and the UV index.
 var searchBtnEl = document.querySelector(".search-btn");
-var cityInfoEl = document.querySelector("#city-content")
+var cityInfoEl = document.querySelector("#city-content");
+var currentDay = document.querySelector("#current-day");
 var apiKey = "a9e49bbfb982db505e4157a83863ddcc";
 var timeStampsCount = 4;
 
@@ -63,13 +64,13 @@ function uvIndex(lat, long, timeStampsCount, apiKey) {
             if (data[0].value < 3) {
                 $("#city-content .uv-index-bg").addClass("bg-success");
             }
-            else if (data[0].value >= 3 || data[0].value < 6) {
+            else if (data[0].value >= 3 && data[0].value < 6) {
                 $("#city-content .uv-index-bg").addClass("bg-moderate");
             }
-            else if (data[0].value >= 6 || data[0].value < 8) {
+            else if (data[0].value >= 6 && data[0].value < 8) {
                 $("#city-content .uv-index-bg").addClass("bg-warning");
             }
-            else if (data[0].value >= 8 || data[0].value < 11) {
+            else if (data[0].value >= 8 && data[0].value < 11) {
                 $("#city-content .uv-index-bg").addClass("bg-danger");
             }
             else if (data[0].value >= 11) {
@@ -78,7 +79,8 @@ function uvIndex(lat, long, timeStampsCount, apiKey) {
         });
 };
 
-$(".search-btn").on("click", function () {
+$(".search-btn").on("click", function (event) {
+    // $("#current-day").empty();
     var cityNameInput = $("#search-input").val();
     getWeatherData(cityNameInput);
     console.log(cityNameInput)
