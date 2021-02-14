@@ -2,7 +2,7 @@ var cityInfoEl = document.querySelector("#city-content");
 var apiKey = "a9e49bbfb982db505e4157a83863ddcc";
 var timeStampsCount = 4;
 var todaysDate = moment().format("MM/DD/YYYY");
-
+// forecast for 5-Days
 function getForecastData(cityNameInput) {
     var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityNameInput}&appid=${apiKey}&units=imperial`
     fetch(requestUrl)
@@ -51,7 +51,7 @@ function uvIndex(lat, long, timeStampsCount, apiKey) {
             $("#city-content .card-body").append(cityUvIndex);
             $("#city-content .uv-index").append(uvIndexBg);
 
-            // A UV Index reading of 0 to 2 means low danger 
+            // A UV Index reading of 0 to 2 means low danger
             // A UV Index reading of 3 to 5 means moderate risk of harm
             // A UV Index reading of 6 to 7 means high risk
             // A UV Index reading of 8 to 10 means very high risk of harm
@@ -82,7 +82,7 @@ function getCurrentWeatherData(cityNameInput, lat, lon) {
         })
         .then(function (data) {
             console.log(data);
-
+            // Dynamiclly resfresh and append weatherdata for searched city
             $("#city-content").empty();
             cityInfoEl.setAttribute("class", "card");
             var cardHeader = $("<header>").addClass("card-header text-center");
@@ -120,8 +120,9 @@ function getCurrentWeatherData(cityNameInput, lat, lon) {
 $(".search-btn").on("click", function () {
 
     var cityName = $("#search-input").val();
+    // First character capitalized
     var cityNameInput = cityName.charAt(0).toUpperCase() + cityName.slice(1)
-    // var cityNameInput = $("#search-input").val();
+    // send a message for user if no city entered
     if (cityNameInput === "") {
         userMessage();
     } else {
@@ -129,7 +130,7 @@ $(".search-btn").on("click", function () {
         getForecastData(cityNameInput);
         console.log(cityNameInput);
     }
-
+    // localStorage for any persistend data
     searchedCities = JSON.parse(localStorage.getItem("searchedCities"))
     if (searchedCities == null) {
         searchedCities = [];
@@ -169,7 +170,7 @@ function renderButtons(cityNameInput) {
         console.log(searchedCities[i]);
     }
 }
-
+// if the array of localStorage exist renderButtons
 $(document).ready(function () {
     if (localStorage.searchedCities == null) {
         return
@@ -177,7 +178,7 @@ $(document).ready(function () {
         renderButtons();
     }
 })
-
+// Retrieve weatherdata for cities in history if clicked... 
 $(document).on("click", ".searched-btn", function () {
     var cityNameInput = $(this).attr("data");
     getCurrentWeatherData(cityNameInput);

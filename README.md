@@ -60,8 +60,17 @@ This site provides access current weather data and (5 day)-Forecast for any loca
 * You're presented with current and future conditions for that city and that city is added to the search history
 * The searched city data contains the city name, the date, an icon representation of weather conditions,    the temperature, the humidity, the wind speed, and the UV index.
 * The UV index is represented with a color that indicates if conditions are favorable, moderate, high, severe, extreme
+    ```
+    reading of 0 to 2 means low danger
+    reading of 3 to 5 means moderate risk of harm
+    reading of 6 to 7 means high risk
+    reading of 8 to 10 means very high risk of harm
+    reading of 11 or more means extreme risk of harm
+    ```
 * For future conditions you get 5-day Forecast which displays: the date, an icon, the temperature and the humidity
 * Aside container on left hand contains history of searched cities so you can access current and future conditions for saved city 
+
+
 
 ## Illustration
 ![illustration](assets/pictures/illustration.gif)
