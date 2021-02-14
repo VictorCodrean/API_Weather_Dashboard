@@ -37,7 +37,7 @@ function uvIndex(lat, long, timeStampsCount, apiKey) {
     // Reset/clear input value;
     $("#search-input").val("");
     // got the UV index for 4 days "might include for 4 days forecast"...
-    var requestUrlUvIndex = `http://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${long}&cnt=${timeStampsCount}&appid=${apiKey}`
+    var requestUrlUvIndex = `https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${long}&cnt=${timeStampsCount}&appid=${apiKey}`
     fetch(requestUrlUvIndex)
         .then(function (response) {
             return response.json();
