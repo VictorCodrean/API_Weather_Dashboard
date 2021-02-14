@@ -4,7 +4,7 @@ var timeStampsCount = 4;
 var todaysDate = moment().format("MM/DD/YYYY");
 
 function getForecastData(cityNameInput) {
-    var requestUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityNameInput}&appid=${apiKey}&units=imperial`
+    var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityNameInput}&appid=${apiKey}&units=imperial`
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
@@ -24,7 +24,7 @@ function getForecastData(cityNameInput) {
                     var dayColumn = $("<div>").addClass("col-md-2 m-1 card bg-primary text-white");
                     var cardBody = $("<div>").addClass("card-body p-1");
                     var date = $("<h5>").addClass("card-title").text(moment(data.list[i].dt_txt).format("M/D/YYYY"));
-                    var icon = $("<img>").attr("src", `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`)
+                    var icon = $("<img>").attr("src", `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`)
                     var temp = $("<p>").addClass("card-text").text("Temp: " + parseInt(data.list[i].main.temp) + " °F");
                     var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
                     daysRow.append(dayColumn.append(cardBody.append(date, icon, temp, humidity)));
@@ -87,7 +87,7 @@ function getCurrentWeatherData(cityNameInput, lat, lon) {
             cityInfoEl.setAttribute("class", "card");
             var cardHeader = $("<header>").addClass("card-header text-center");
             var cityHeader = $("<h2>").text(data.name + " - " + data.weather[0].main);
-            var icon = $("<img>").attr("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
+            var icon = $("<img>").attr("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
             var headerDescription = $("<p>").text(data.weather[0].description);
             var headerTemp = $("<h2>").text(parseInt(data.main.temp) + "°F");
             var headerHighLow = $("<p>").text("H:" + parseInt(data.main.temp_max) + "° " + " L:" + parseInt(data.main.temp_min) + "°");
