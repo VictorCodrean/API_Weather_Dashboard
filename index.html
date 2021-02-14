@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body>
+<body class="bg-light">
   <header class="first-header">
     <nav class="navbar navbar-light forecast-nav">
       <a class="navbar-brand" href="index.html">
@@ -22,33 +22,41 @@
   </header>
   <main class="container-fluid">
     <div class="row">
-      <aside class="col-md-3 bg-light p-4">
-        <h4>Search for a City:</h4>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="search-input" placeholder="City name">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary search-btn" type="button">Search</button>
+      <aside class="col-md-4">
+        <section class="aside m-3 p-4">
+          <h4>Search for a City:</h4>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="search-input" placeholder="City">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary search-btn" type="button">Search</button>
+            </div>
           </div>
-        </div>
-        <ul class="list-group">
-          <h3>In progress...</h3>
-          <p>here will be searched cities</p>
-        </ul>
-      </aside>
-      <div id="dynamic" class="col-md-9">
-        <div class="col-md-6 p-4">
-          <div id="city-content">
-            <p>Here will pop up dinamyc forecast info</p>
-            <a href="assets/pictures/06-server-side-apis-homework-demo.png" target="blank">see example</a>
-          </div>
+          <section class="mt-5">
+            <h3>Searched Cities</h3>
+            <div id="searched-cities" class="text-center">
 
+            </div>
+          </section>
+        </section>
+      </aside>
+      <div id="dynamic" class="col-md-8">
+        <div class="col-md-5 mt-3">
+          <div id="city-content">
+          </div>
         </div>
-        <div id="five-day-forecast" class="row m-2">
+        <div id="five-day-forecast" class="row m-1">
+          <section id="five-days-tabs">
+
+          </section>
         </div>
       </div>
-
     </div>
   </main>
+  <footer class="container-fluid mt-auto my-background text-beige">
+    <div class="text-center">
+      <p class="p-2"> &#169; Victor Codrean 2021</p>
+    </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -56,13 +64,3 @@
 </body>
 
 </html>
-<!-- from bootstrap -->
-<!-- $('#myList a').on('click', function (e) {
-e.preventDefault()
-$(this).tab('show')
-})
-
-$('#myList a[href="#profile"]').tab('show') // Select tab by name
-$('#myList a:first-child').tab('show') // Select first tab
-$('#myList a:last-child').tab('show') // Select last tab
-$('#myList a:nth-child(3)').tab('show') // Select third tab -->

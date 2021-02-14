@@ -2,6 +2,14 @@ html {
     height: 100%;
 }
 
+body{
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
 .first-header {
     background-color: #e45f56;
     text-align: center;
@@ -16,9 +24,32 @@ nav h1 {
     display: inline-block;
 }
 
-/* .my-background {
+.aside {
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+header.card-body {
+    padding-top: 0.25rem;
+}
+
+section {
+    text-align: center;
+}
+
+.searched-btn {
+    display: block;
+    margin: auto ; 
+    width: 150px;
+    margin-bottom: 1rem;
+}
+
+.my-background {
     background-color: #e45f56;
-} */
+}
+
+.text-beige {
+    color: beige;
+}
 
 .text-color {
     color: beige;
